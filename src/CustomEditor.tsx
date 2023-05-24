@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 type EditorProps ={
   onChangeEditor?: (data: string ) => void;
 }
