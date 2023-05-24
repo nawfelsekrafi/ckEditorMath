@@ -1,0 +1,32 @@
+{
+  "appName": {
+    "message": "MATH Keys - Éditeur d'équations et formules"
+  },
+  "appDesc": {
+    "message": "Éditeur d'équations en ligne gratuit qui permet aux utilisateurs d'écrire des équations, des formules et des symboles mathématiques."
+  },
+  "copy_button":{
+    "message": "COPIE",
+    "description": "copy button"
+  },
+  "new_button":{
+    "message": "NOUVEAU",
+    "description": "new button"
+  },
+  "edit_button":{
+    "message": "Éditer",
+    "description": "edit button"
+  },
+  "trig_title":{
+    "message": "Trigonométrie",
+    "description": "trig title"
+  },
+  "op_title":{
+    "message": "Opérations",
+    "description": "operations title"
+  },
+  "calc_title":{
+    "message": "Calculus",
+    "description": "calculus title"
+  }
+}

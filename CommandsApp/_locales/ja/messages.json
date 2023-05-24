@@ -1,0 +1,33 @@
+{
+  "appName": {
+    "message": "MATH Keys - 方程式・数式エディタ"
+  },
+  "appDesc": {
+    "message": "オンラインで数式や公式、シンボルを書き込める無料のオンライン方程式エディタ"
+  },
+  "copy_button":{
+    "message": "コピー",
+    "description": "copy button"
+  },
+  "new_button":{
+    "message": "新",
+    "description": "new button"
+  },
+  "edit_button":{
+    "message": "編集",
+    "description": "edit button"
+  },  
+  "trig_title":{
+    "message": "さんかくほう",
+    "description": "trig title"
+  },
+  "op_title":{
+    "message": "事業",
+    "description": "operations title"
+  },
+  "calc_title":{
+    "message": "微分積分学",
+    "description": "calculus title"
+  }
+}
+
