@@ -14,10 +14,9 @@ function App(): JSX.Element {
   const equationRef = React.useRef<HTMLDivElement>(null);
  
  const handleEditorChange = (data: string ) => {
-  console.log("************");
+  
   console.log(data);
   setData(data);
-  console.log("************");
  }
  React.useEffect(() => {
   const script = document.createElement('script');
@@ -41,7 +40,7 @@ function App(): JSX.Element {
   return<> <CustomEditor onChangeEditor={handleEditorChange} />
   <div>
   <h3>Editor Output:</h3>
-  <div  ref={equationRef}>{data}</div>
+  {/* {data} */}
 </div></>;
 }
 
