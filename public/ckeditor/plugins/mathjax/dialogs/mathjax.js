@@ -32,7 +32,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 							if ( !( CKEDITOR.env.ie && CKEDITOR.env.version == 8 ) ) {
 								this.getInputElement().on( 'keyup', function() {
 									// Add \( and \) for preview.
-									preview.setValue( '\\(' + that.getInputElement().getValue() + '\\)' );
+									// preview.setValue( '\\(' + that.getInputElement().getValue() + '\\)' );
 								} );
 							}
 						},
@@ -47,26 +47,16 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 							widget.setData( 'math', '\\(' + this.getValue() + '\\)' );
 						}
 					},
-					{
-						id: 'documentation',
-						type: 'html',
-						html:
-							'<div style="width:100%;text-align:right;margin:-8px 0 10px">' +
-								'<a class="cke_mathjax_doc" href="' + lang.docUrl + '" target="_black" style="cursor:pointer;color:#00B2CE;text-decoration:underline">' +
-									lang.docLabel +
-								'</a>' +
-							'</div>'
-					},
-					!(CKEDITOR.env.ie && 8 == CKEDITOR.env.version) && {
-						id: "preview", type: "html", html: '\x3cdiv style\x3d"width:100%;text-align:center;"\x3e\x3ciframe style\x3d"border:0;width:0;height:0;font-size:20px" scrolling\x3d"no" frameborder\x3d"0" allowTransparency\x3d"true" src\x3d"' +
-							CKEDITOR.plugins.mathjax.fixSrc + '"\x3e\x3c/iframe\x3e\x3c/div\x3e', 
-							onLoad: function () { 
-								var a = CKEDITOR.document.getById(this.domId).getChild(0); 
-								preview = new CKEDITOR.plugins.mathjax.frameWrapper(a, editor) ;
-							}, 
+					// !(CKEDITOR.env.ie && 8 == CKEDITOR.env.version) && {
+					// 	id: "preview", type: "html", html: '\x3cdiv style\x3d"width:100%;text-align:center;"\x3e\x3ciframe style\x3d"border:0;width:0;height:0;font-size:20px" scrolling\x3d"no" frameborder\x3d"0" allowTransparency\x3d"true" src\x3d"' +
+					// 		CKEDITOR.plugins.mathjax.fixSrc + '"\x3e\x3c/iframe\x3e\x3c/div\x3e', 
+					// 		onLoad: function () { 
+					// 			var a = CKEDITOR.document.getById(this.domId).getChild(0); 
+					// 			preview = new CKEDITOR.plugins.mathjax.frameWrapper(a, editor) ;
+					// 		}, 
 
-							setup: function (a) { preview.setValue(a.data.math) }
-					},
+					// 		setup: function (a) { preview.setValue(a.data.math) }
+					// },
 					( !( CKEDITOR.env.ie && CKEDITOR.env.version == 8 ) ) && {
 						id: 'preview1',
 						type: 'html',
@@ -87,7 +77,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 										console.log("message from math commands");
 										console.log(event.data);
 										mathTextArea.getInputElement().setValue(event.data)
-										preview.setValue( '\\(' + event.data + '\\)' );
+										// preview.setValue( '\\(' + event.data + '\\)' );
 										return event.data;
 									} else {
 										return;
@@ -99,7 +89,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 						 },
 
 					 setup: function( widget ) {
-						 	preview.setValue( widget.data.math );
+						 	// preview.setValue( widget.data.math );
 							 setTimeout(function(){
 								var MathCommandsframe = document.getElementById('softy_math_commands');
 								console.log(mathTextArea.getInputElement().getValue())
@@ -111,7 +101,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 										console.log("message from math commands");
 										console.log(event.data);
 										mathTextArea.getInputElement().setValue(event.data)
-										preview.setValue( '\\(' + event.data + '\\)' );
+										// preview.setValue( '\\(' + event.data + '\\)' );
 										return event.data;
 									} else {
 										return;
