@@ -73,6 +73,17 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 					}
 				]
 			}
-		]
+		],
+		onOk: function() {
+			// Get the dialog's input values
+			var equationValue = this.getValueOf('info', 'equation');
+	  
+			// Perform any necessary actions with the input values
+			console.log('Equation value:', equationValue);
+			// You can update the editor's content or perform any other desired action here
+	  
+			// Close the dialog
+			this.hide();
+		  }
 	};
 } );
