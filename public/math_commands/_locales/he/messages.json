@@ -1,0 +1,32 @@
+{
+  "appName": {
+    "message": "MATH Keys - עורך משוואות ונוסחאות"
+  },
+  "appDesc": {
+    "message": "עורך משוואות מקוון בחינם המאפשר למשתמשים לכתוב משוואות, נוסחאות וסמלים מתמטיים באינטרנט"
+  },
+  "copy_button":{
+    "message": "העתק",
+    "description": "copy button"
+  },
+  "new_button":{
+    "message": "חדש",
+    "description": "new button"
+  },
+  "edit_button":{
+    "message": "עֲרוֹך",
+    "description": "edit button"
+  },  
+  "trig_title":{
+    "message": "טְרִיגוֹנוֹמֶטרִיָה",
+    "description": "trig title"
+  },
+  "op_title":{
+    "message": "פעולות",
+    "description": "operation title"
+  },
+  "calc_title":{
+    "message": "אינטגרלי ודיפרנציאלי",
+    "description": "calc title"
+  }
+}

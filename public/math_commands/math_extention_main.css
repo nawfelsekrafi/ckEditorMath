@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+.contatiner{
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 0.5fr 0.5fr;
+  grid-gap: 5px;
+  grid-template-areas:
+          "keyboard_area"
+          "output_area"
+          "footer_area"
+          "help_area";
+  padding: 10px;
+  width: 500px;
+  height: 270px;
+  margin: auto;
+  background-color: rgba(248,249,250, 1);
+  border-radius: 8px 8px 0px 0px ;
+}
+
+.br {
+    margin-bottom: 0px;
+}
+
+#parent{
+  white-space: nowrap;
+  margin-left: 10px;
+  /* overflow-x: auto; */
+}
+
+.child{
+  display: inline-block;
+}
+
+.mathKeyboard{
+  border: 10px solid white;
+}
+
+.material-symbols-outlined{
+  color: white;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 60
+}
+
+h4{
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 20px !important;
+  margin: 15px 0 !important;
+
+}
+.output_area{
+  /* background-color: rgba(248,249,250, 1); */
+  margin-top: 10px;
+  min-width: 500px;
+  min-height: 40px;
+  margin-bottom: 0px;
+}
+
+.dialog{
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border: none;
+  background-color: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(150,150,150);
+  font-size: 20px;
+}
+
+#dont_show{
+  margin-top: 5px;
+  margin-bottom: none;
+  font-size: 15px;
+}
+
+#youtube_video{
+  border-radius: 5px;
+}
+
+.input{
+  /* background-color: rgba(248,249,250, 1); */
+  margin-top: 10px;
+  padding-left: 70px;
+  margin-bottom: 10px;
+}
+
+.hr{
+  border: 2px solid rgb(228,229,230);
+  display: none;
+}
+
+.footer_area{
+  background-color: rgba(248,249,250, 1);
+  width: 500px;
+  height: 80px;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.help_area{
+  /* background-color: rgba(248,249,250, 1); */
+  width: 500px;
+  margin:auto;
+  grid_area: help_area;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+          "left_help ight_help";
+  font-size: 14px;
+  margin: auto;
+  display: none;
+}
+
+.help_area_left {
+    grid_area: left_help;
+    margin: left;
+}
+
+.help_area_right {
+    grid_area: right_help;
+    margin-left: 70px;
+}
+
+.button{
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
+  background: white;
+  cursor: pointer;
+  color: #344054;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 8px;
+
+}
+
+#clear{
+  margin-left: 145px;
+  margin-right: 10px;
+}
+
+button.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}
+
+#frame {
+  max-width: 40em;
+  margin: auto;
+}
+
+
+#output {
+  font-size: 170%;
+  padding: 1.4px;
+  text-align: center;
+}
+
+#output > pre {
+  margin-left: 5px;
+}
+
+p {
+   font-family: 'Poppins', sans-serif;
+   font-weight: normal;
+   font-style: normal;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+/* this is the keyboard CSS */
+.keyboard {
+    grid_area: keyboard_area;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+          "left_pad_area mid_pad_area right_pad_area";
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin: auto;
+    color: #022e16;
+}
+
+h2{
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  color: #6c8096;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.keyboard_leftbox {
+    grid_area: left_pad_area;
+    margin: auto;
+}
+
+.keyboard_middlebox{
+    grid_area: mid_pad_area;
+    margin: auto;
+}
+
+.keyboard_right{
+    grid_area: right_pad_area;
+    margin: auto;
+}
+
+.keyboard__row {
+    height: 2em;
+    margin: 0.2em;
+}
+
+.keyboard__row > * {
+
+    position: relative;
+    text-align: center;
+    float: left;
+    border-radius: 3.9px;
+    margin: 2.8px;
+    padding: 2.8px;
+    width: 42px;
+    height: 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-user-select: none;
+    display:block;
+    margin: 2.8px;
+    /* background: rgba(101, 137, 111, 0.6); */
+    background: white;
+  }
+#go-to-options:hover{
+  cursor: pointer;
+}
+.key--letter:hover {
+    background: rgba(255,255,255,.6);
+    cursor:pointer;
+    color: #344054;
+    font-weight: 300;
+    /* border: 1px solid rgba(60,120,113,0.2); */
+}
+
+.button:hover{
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  background: #F9FAFB;
+  cursor:pointer;
+}
+.button:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+}
+.key--letter:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+}
+
+.feedbackLink{
+  font-size: 15px;
+  color:rgb(101, 137, 111);
+  margin-left:10px;
+}
+.email_link{
+  color: rgba(101, 137, 111);
+}
+.email_link:hover{
+  background-color: rgba(101, 137, 111, 0.6);
+  color: white;
+}
+
+#history_dialog{
+  width: 500px;
+}
+
+.moveLeft{
+  margin-left: 25px;
+}
+/* #cancel_symbol{
+  padding-bottom: 30px;
+} */
+#cancel_symbol:hover{
+  cursor: pointer;
+}
+
+#latexHistoryHTML{
+  text-align: right;
+}
+
+.historyText{
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+#editHistory{
+  width: 60px;
+  height: 30px;
+  font-size: 15px;
+  float: left;
+}
+
+.link{
+  color: rgba(60,120,113);
+  font-size: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.link:hover{
+  background-color: rgba(60,120,113, 0.9);
+  color: white;
+}
+
+#mid1{
+  margin-left: 50px;
+}
+
+#mid2{
+  margin-left: 28px;
+}
+
+.key--letter {
+    line-height: 27px;
+    width: 42px;
+    height: 35px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 300;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+}
+.key--letter:hover {
+  background: #F9FAFB;
+  cursor:pointer;
+  color: #344054;
+  border: 1px solid rgba(60,120,113,0.2);
+}
+.key--letter--large {
+    line-height: 27px;
+    width: 42px;
+    height: 35px;
+    color: #344054;
+    font-size: 17px;
+    font-weight: 300;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+}
+.key--letter--large:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+}
+
+.key--letter--large:active {
+ 
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+  
+}
+.key--letter--small {
+    line-height: 27px;
+    width: 42px;
+    height: 35px;
+    color: #344054;
+    font-size: 11px;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    font-weight: 300;
+}
+.key--letter--small:hover {
+  background: #F9FAFB;
+  cursor:pointer;
+  color: #344054;
+  border: 1px solid rgba(60,120,113,0.2);
+}
+.key--letter--small:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+}
+
+.key--letter--very--large {
+    line-height: 27px;
+    width: 42px;
+    height: 35px;
+    font-weight: 300;
+    color: #344054;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+}
+.key--letter--very--large:hover {
+  background: #F9FAFB;
+    cursor:pointer;
+    color: #344054;
+    border: 1px solid rgba(60,120,113,0.2);
+}
+.key--letter--very--large:active {
+  background: #FFFFFF;
+  border: 1px solid #D0D5DD;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F2F4F7;
+}
+
+
+.keyboard__row > div[data-pressed],
+.keyboard__row > div:active {
+    position: relative;
+    /* top: 0.2em; */
+}
+
+
+.keyboard > .keyboard__row {
+    text-align: center;
+}
+
+/* this is different size of buttons to make it more wide */
+.key--w3 {
+    width: 4.6em;
+}
+
+.key--w4 {
+    width: 6em;
+}
+
+.key--w5 {
+    width: 6.5em;
+}
+
+.key--w6 {
+    width: 8.3em;
+}
+
+.key--arrow {
+    line-height: 2.7em;
+}
+
+.hovertext {
+  position: relative;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  /* opacity: 0; */
+  /* width: 80px; */
+  /* background-color: rgba(101, 137, 111, 0.6); */
+  color: rgba(60,120,113);
+  text-align: center;
+  /* border-radius: 5px; */
+  padding: 5px 0;
+  /* transition: opacity 1s ease-in-out; */
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  bottom: 19px;
+  text-decoration: underline;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+#matrix_dialog{
+  font-size: 12px;
+}
+
+.latex_link{
+    color: rgba(60,120,113);
+    cursor: pointer;
+}
+
+#latex_link{
+    text-decoration: none;
+    color: rgba(60,120,113);
+}
+
+.output_area{
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.enter-text{
+  font-size: 14px;
+  text-align: center;
+  margin-left: 50px;
+}
