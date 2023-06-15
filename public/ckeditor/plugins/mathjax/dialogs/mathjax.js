@@ -26,7 +26,6 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 						label: lang.dialogInput,
 
 						onLoad: function() {
-							var that = this;
 							mathTextArea = this;
 						},
 
@@ -52,38 +51,45 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 							setTimeout(function(){
 								var MathCommandsframe = document.getElementById('softy_math_commands');
 								MathCommandsframe.contentWindow.postMessage(mathTextArea.getInputElement().getValue(), "*");
-							
+       
 								window.addEventListener('message', event => {
 									// IMPORTANT: check the origin of the data!
 									if (event.origin === location.origin) {
-										if(typeof event.data === "string"){
+										if( event.data !== "cancelEvent"){
 										mathTextArea.getInputElement().setValue(event.data)
-										return event.data;
+										const okButton = document.getElementById('cke_57_uiElement');
+										if(okButton){
+											okButton.click();
 										}
-										return;
-									} else {
-										return;
+										}else {
+										const cancelButton = document.getElementById('cke_55_uiElement');
+										if(cancelButton){
+											cancelButton.click();
+										}
+										}
 									}
 								});
-							}, 1000);
-								
-							
+							}, 1000);								
 						 },
 						
 					}
 				]
 			}
 		],
-		onOk: function() {
-			// Get the dialog's input values
-			var equationValue = this.getValueOf('info', 'equation');
-	  
-			// Perform any necessary actions with the input values
-			console.log('Equation value:', equationValue);
-			// You can update the editor's content or perform any other desired action here
-	  
-			// Close the dialog
-			this.hide();
+		onLoad: function() {
+			// Hide the OK and Cancel buttons using CSS
+			var dialogElement = this.getElement().getParent();
+			var okButton = dialogElement.findOne('.cke_dialog_ui_button_ok');
+		
+			var cancelButton = dialogElement.findOne('.cke_dialog_ui_button_cancel');
+			
+			if (okButton) {
+			  okButton.setStyle('display', 'none');
+			}
+			
+			if (cancelButton) {
+			  cancelButton.setStyle('display', 'none');
+			}
 		  }
 	};
 } );

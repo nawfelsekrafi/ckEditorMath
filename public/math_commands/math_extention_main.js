@@ -10,6 +10,9 @@ document.getElementById("closeWelcomeDialog").addEventListener("click", closeWel
 // copy latex
 document.getElementById("copy_latex").addEventListener("click", toLatex);
 
+// cancel
+document.getElementById("cancel_button").addEventListener("click", cancelAndClose);
+
 // history
 // document.getElementById("history").addEventListener("click", openHistoryDialog);
 document.getElementById("closeHistoryDialog").addEventListener("click", closeHistoryDialog);
@@ -344,8 +347,9 @@ window.onload = (event) => {
   window.addEventListener('message', event => {
     // IMPORTANT: check the origin of the data!
         softyEditor = event;
-        mathFieldArray[mathFieldFocus].latex(String.raw`${softyEditor.data}`);  // Assign specific value
-        mathFieldArray[mathFieldFocus].focus();
+       
+          mathFieldArray[mathFieldFocus].latex(String.raw`${softyEditor.data}`);  // Assign specific value
+          mathFieldArray[mathFieldFocus].focus();   
 
 });
 
@@ -469,6 +473,19 @@ function toLatex(){
   }
  
 } // end of toLatex
+
+// cancel and close dialog 
+
+function cancelAndClose (){
+  if(softyEditor){
+    softyEditor.source.postMessage(
+      "cancelEvent",
+      softyEditor.origin
+    );
+  }else {
+    console.log("softyEditor is null");
+  }
+}
 
 
 // history code
