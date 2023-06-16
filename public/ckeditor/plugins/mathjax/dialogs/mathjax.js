@@ -5,6 +5,8 @@
 
 'use strict';
 
+var isLoaded = false;
+
 CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 	
 	var preview,
@@ -32,6 +34,8 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 						setup: function( widget ) {
 							// Remove \( and \).
 							this.setValue( CKEDITOR.plugins.mathjax.trim( widget.data.math ) );
+							var MathCommandsframe = document.getElementById('softy_math_commands');
+							MathCommandsframe.contentWindow.postMessage(this.getInputElement().getValue(), "*");
 						},
 
 						commit: function( widget ) {
@@ -48,6 +52,8 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 							'</div>',
 
 						 onLoad: function() {
+							if(!isLoaded){
+							isLoaded = true;
 							setTimeout(function(){
 								var MathCommandsframe = document.getElementById('softy_math_commands');
 								MathCommandsframe.contentWindow.postMessage(mathTextArea.getInputElement().getValue(), "*");
@@ -69,7 +75,8 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 										}
 									}
 								});
-							}, 1000);								
+							}, 1000);	
+						}							
 						 },
 						
 					}

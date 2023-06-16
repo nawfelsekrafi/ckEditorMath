@@ -37,9 +37,12 @@ function App(): JSX.Element {
 
 
 
-  return<> <CustomEditor onChangeEditor={handleEditorChange} />
+  return<> 
+  <div className='editor_zone'>
+  <CustomEditor onChangeEditor={handleEditorChange} />
+  </div>
   <div>
-  <h3>Editor Output:</h3>
+  {/* <h3>Editor Output:</h3> */}
   {/* {data} */}
 </div></>;
 }
