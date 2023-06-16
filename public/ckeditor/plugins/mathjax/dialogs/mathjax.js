@@ -55,12 +55,9 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 								window.addEventListener('message', event => {
 									// IMPORTANT: check the origin of the data!
 									if (event.origin === location.origin) {
-										console.log(event.data)
 										if( event.data !== "cancelEvent"){
 										mathTextArea.getInputElement().setValue(event.data)
 										const okButton = document.getElementsByClassName('cke_dialog_ui_button_ok')[0];
-										console.log(okButton);
-										console.log("hi from save")
 										if(okButton){
 											okButton.click();
 										}
@@ -83,8 +80,9 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 			// Hide the OK and Cancel buttons using CSS
 			var dialogElement = this.getElement().getParent();
 			var okButton = dialogElement.findOne('.cke_dialog_ui_button_ok');
+			var defaultEquationTextArea = dialogElement.findOne('.cke_dialog_ui_input_textarea ');
 		
-			var cancelButton = dialogElement.findOne('.cke_dialog_ui_button_cancel');
+			var cancelButton = dialogElement.findOne('.cke_dialog_ui_input_textarea ');
 			
 			if (okButton) {
 			  okButton.setStyle('display', 'none');
@@ -92,6 +90,10 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 			
 			if (cancelButton) {
 			  cancelButton.setStyle('display', 'none');
+			}
+			
+			if (defaultEquationTextArea) {
+				defaultEquationTextArea.setStyle('display', 'none');
 			}
 		  }
 	};

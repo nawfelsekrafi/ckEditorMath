@@ -39,9 +39,7 @@ https://ckeditor.com/docs/ckeditor4/latest/guide/skin_sdk_reset.html
 	position: static;
 	transition: none;
 }
-#cke_47_uiElement {
-	display: none !important;
-}
+
 /* Reset for elements and their children. */
 .cke_reset_all, .cke_reset_all *,
 .cke_reset_all a, .cke_reset_all textarea
