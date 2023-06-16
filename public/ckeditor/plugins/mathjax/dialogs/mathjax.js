@@ -60,9 +60,10 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
        
 								window.addEventListener('message', event => {
 									// IMPORTANT: check the origin of the data!
-									if (event.origin === location.origin) {
-										if( event.data !== "cancelEvent"){
-										mathTextArea.getInputElement().setValue(event.data)
+									if (event.origin === location.origin && event.data.source ==="softy_math_commands") {
+										if( event.data.data !== "cancelEvent"){
+
+										mathTextArea.getInputElement().setValue(event.data.data)
 										const okButton = document.getElementsByClassName('cke_dialog_ui_button_ok')[0];
 										if(okButton){
 											okButton.click();

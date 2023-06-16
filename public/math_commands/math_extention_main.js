@@ -465,7 +465,7 @@ function toLatex(){
   trackEvent('Copy Latex', 'copy_latex');
   if(softyEditor){
     softyEditor.source.postMessage(
-      latex,
+      {data: latex, source: "softy_math_commands"},
       softyEditor.origin
     );
   }else {
@@ -479,7 +479,7 @@ function toLatex(){
 function cancelAndClose (){
   if(softyEditor){
     softyEditor.source.postMessage(
-      "cancelEvent",
+      {data: "cancelEvent",  source: "softy_math_commands"},
       softyEditor.origin
     );
   }else {
