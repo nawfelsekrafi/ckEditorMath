@@ -35,10 +35,18 @@ CKEDITOR.editorConfig = function( config ) {
 	config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
 	config.mathJaxClass = 'my-math';
 
+	config.extraPlugins = 'emoji,resize, floatpanel, panel, panelbutton, button, textmatch, ajax, xml, autocomplete, textwatcher';
+
+
+
+
+
+
 
 	// The default plugins included in the basic setup define some buttons that
 	// are not needed in a basic editor. They are removed here.
 	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
+	config.resize_dir = 'both';
 
 	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
