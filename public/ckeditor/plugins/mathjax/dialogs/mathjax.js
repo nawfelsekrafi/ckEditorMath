@@ -7,7 +7,7 @@
 
 var isLoaded = false;
 
-CKEDITOR.dialog.add( 'mathjax', function( editor ) {
+CKEDITOR.dialog?.add( 'mathjax', function( editor ) {
 	
 	var preview,
 		lang = editor.lang.mathjax;
@@ -16,7 +16,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 
 	return {
 		title: lang.title,
-		minWidth: 700,
+		minWidth: 400,
 		minHeight: 400,
 		contents: [
 			{
@@ -48,7 +48,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 						type: 'html',
 						html:
 							'<div style="width:100%;text-align:center;">' +
-								'<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:600px; height: 600px" src="math_commands/index.html" id="softy_math_commands"></iframe>' +
+								'<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:600px; height: 500px" src="math_commands/index.html" id="softy_math_commands"></iframe>' +
 							'</div>',
 
 						 onLoad: function() {
