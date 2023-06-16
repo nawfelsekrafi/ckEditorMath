@@ -58,14 +58,14 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 										console.log(event.data)
 										if( event.data !== "cancelEvent"){
 										mathTextArea.getInputElement().setValue(event.data)
-										const okButton = document.getElementById('cke_57_uiElement');
+										const okButton = document.getElementsByClassName('cke_dialog_ui_button_ok')[0];
 										console.log(okButton);
 										console.log("hi from save")
 										if(okButton){
 											okButton.click();
 										}
 										}else {
-										const cancelButton = document.getElementById('cke_55_uiElement');
+										const cancelButton = document.getElementsByClassName('cke_dialog_ui_button_cancel')[0];
 										if(cancelButton){
 											cancelButton.click();
 										}
