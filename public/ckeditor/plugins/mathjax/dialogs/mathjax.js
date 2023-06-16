@@ -81,8 +81,7 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 			var dialogElement = this.getElement().getParent();
 			var okButton = dialogElement.findOne('.cke_dialog_ui_button_ok');
 			var defaultEquationTextArea = dialogElement.findOne('.cke_dialog_ui_input_textarea ');
-		
-			var cancelButton = dialogElement.findOne('.cke_dialog_ui_input_textarea ');
+			var cancelButton = dialogElement.findOne('.cke_dialog_ui_button_cancel');
 			
 			if (okButton) {
 			  okButton.setStyle('display', 'none');
