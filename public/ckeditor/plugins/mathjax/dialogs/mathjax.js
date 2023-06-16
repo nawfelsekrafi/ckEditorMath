@@ -55,9 +55,12 @@ CKEDITOR.dialog.add( 'mathjax', function( editor ) {
 								window.addEventListener('message', event => {
 									// IMPORTANT: check the origin of the data!
 									if (event.origin === location.origin) {
+										console.log(event.data)
 										if( event.data !== "cancelEvent"){
 										mathTextArea.getInputElement().setValue(event.data)
 										const okButton = document.getElementById('cke_57_uiElement');
+										console.log(okButton);
+										console.log("hi from save")
 										if(okButton){
 											okButton.click();
 										}
