@@ -52,7 +52,7 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
             type: "html",
             html:
               '<div style="width:100%;text-align:center;">' +
-              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 400px" src="math_commands/index.html" id="softy_math_commands"></iframe>' +
+              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 370px" src="math_commands/index.html" id="softy_math_commands"></iframe>' +
               "</div>",
 
             onLoad: function () {
