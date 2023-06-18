@@ -75,3 +75,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media only screen and (max-width: 550px) {
+  #softy_math_commands {
+    width: 94vw !important;
+  }
+}
