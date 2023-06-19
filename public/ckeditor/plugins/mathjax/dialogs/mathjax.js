@@ -128,6 +128,24 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
       if (defaultEquationTextArea) {
         defaultEquationTextArea.setStyle("display", "none");
       }
+
+      var dialogContainer = dialogElement.findOne(".cke_dialog");
+      var InnerContainer = dialogElement.findOne(".cke_dialog_contents_body");
+
+      function updateDialogHeight() {
+        var windowHeight = window.innerHeight;
+        var dialogHeight = 400;
+
+        if (window.innerWidth <= 550) {
+          dialogHeight = windowHeight;
+        }
+
+        dialogContainer.setStyle("height", dialogHeight + "px");
+        InnerContainer.setStyle("height", dialogHeight - 88 + "px");
+      }
+
+      updateDialogHeight();
+      window.addEventListener("resize", updateDialogHeight);
     },
   };
 });
