@@ -56,7 +56,6 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
               "</div>",
 
             onLoad: function () {
-              console.log("hi");
               if (!isLoaded) {
                 isLoaded = true;
 
