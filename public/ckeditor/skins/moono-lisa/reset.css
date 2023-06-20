@@ -118,3 +118,10 @@ https://ckeditor.com/docs/ckeditor4/latest/guide/skin_sdk_reset.html
 {
 	table-layout: auto;
 }
+
+@media only screen and (max-width: 550px) {
+	#softy_math_commands {
+	  width: 94vw !important;
+	}
+  }
+  

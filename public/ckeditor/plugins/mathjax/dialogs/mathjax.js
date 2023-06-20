@@ -52,10 +52,11 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
             type: "html",
             html:
               '<div style="width:100%;text-align:center;">' +
-              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 370px" src="math_commands/index.html" id="softy_math_commands"></iframe>' +
+              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 370px" src="ckeditor/math_commands/index.html" id="softy_math_commands"></iframe>' +
               "</div>",
 
             onLoad: function () {
+              makeMathCommandResponsive(this);
               if (!isLoaded) {
                 isLoaded = true;
 
@@ -149,3 +150,20 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
     },
   };
 });
+
+function makeMathCommandResponsive(that) {
+  var iframes = Array.from(that.getElement().find("#softy_math_commands"));
+
+  function applyResponsiveStyle() {
+    iframes.forEach(function (iframe) {
+      if (window.innerWidth <= 550) {
+        iframe.setStyle("width", "94vw");
+      } else {
+        iframe.setStyle("width", "540px");
+      }
+    });
+  }
+
+  applyResponsiveStyle();
+  window.addEventListener("resize", applyResponsiveStyle);
+}

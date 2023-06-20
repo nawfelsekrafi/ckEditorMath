@@ -1,50 +1,19 @@
-
 import React from 'react';
-import CustomEditor from './CustomEditor';
-
-declare const MathJax: {
-  Hub: {
-    Queue: (tasks: any[]) => void;
-  };
-};
-
+import useCustomEditor from './useCustomEditor';
 
 function App(): JSX.Element {
-  const [data, setData] = React.useState<string>('');
-  const equationRef = React.useRef<HTMLDivElement>(null);
- 
- const handleEditorChange = (data: string ) => {
-  
-  console.log(data);
-  setData(data);
- }
- React.useEffect(() => {
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
+  const { editorRef: editorRef1 } = useCustomEditor({
+    initialValue: String.raw` <p><span class="math-tex">\(x=-b\pm\sqrt{b^2-4ac}\frac{2}{a}-\ 7\)</span>Editor 1: Hello, World!</p>`,
+    onChangeEditor: (data) => {
+      console.log('Editor 1 data:', data);
+    },
+  });
 
-  script.onload = () => {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, equationRef.current]);
-  };
-
-  document.head.appendChild(script);
-
-  return () => {
-    document.head.removeChild(script);
-  };
-}, [data]);
-
-
-
-
-  return<> 
-  <div className='editor_zone'>
-  <CustomEditor onChangeEditor={handleEditorChange} />
-  </div>
-  <div>
-  {/* <h3>Editor Output:</h3> */}
-  {/* {data} */}
-</div></>;
+  return (
+    <div>
+      <textarea ref={editorRef1} />
+    </div>
+  );
 }
 
 export default App;

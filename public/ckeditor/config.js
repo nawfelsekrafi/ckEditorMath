@@ -33,7 +33,7 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
-	config.mathJaxClass = 'my-math';
+	config.mathJaxClass = 'math-tex';
 
 	config.extraPlugins = 'emoji,resize, floatpanel, panel, panelbutton, button, textmatch, ajax, xml, autocomplete, textwatcher';
 
