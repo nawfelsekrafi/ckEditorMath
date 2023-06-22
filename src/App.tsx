@@ -1,4 +1,3 @@
-import React from 'react';
 import useCustomEditor from './useCustomEditor';
 
 function App(): JSX.Element {
