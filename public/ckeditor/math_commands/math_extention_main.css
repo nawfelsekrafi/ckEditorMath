@@ -532,6 +532,7 @@ h2 {
     overflow: hidden;
     overflow-y: hidden;
     overflow-x: auto;
+    height: 214px;
   }
   .keyboard > .keyboard_leftbox {
     min-width: 155px;

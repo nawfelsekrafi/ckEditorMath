@@ -5,14 +5,14 @@
 
 "use strict";
 
-var isLoaded = false;
+
 
 CKEDITOR.dialog?.add("mathjax", function (editor) {
   var preview,
     lang = editor.lang.mathjax;
 
   var mathTextArea;
-
+  var isLoaded = false;
   return {
     title: lang.title,
     minWidth: 400,
@@ -31,6 +31,7 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
             },
 
             setup: function (widget) {
+              mathTextArea = this;
               // Remove \( and \).
               this.setValue(CKEDITOR.plugins.mathjax.trim(widget.data.math));
               var MathCommandsframe = document.getElementById(
@@ -52,17 +53,15 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
             type: "html",
             html:
               '<div style="width:100%;text-align:center;">' +
-              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 370px" src="ckeditor/math_commands/index.html" id="softy_math_commands"></iframe>' +
+              '<iframe  allow="clipboard-read; clipboard-write" frameborder="0"  style="width:540px; height: 380px" src="../../ckeditor/math_commands/index.html" id="softy_math_commands"></iframe>' +
               "</div>",
 
             onLoad: function () {
               makeMathCommandResponsive(this);
-              if (!isLoaded) {
+              // if (!isLoaded) {
                 isLoaded = true;
 
-                var MathCommandsframe = document.getElementById(
-                  "softy_math_commands"
-                );
+                
 
                 window.addEventListener("message", (event) => {
                   // IMPORTANT: check the origin of the data!
@@ -73,6 +72,9 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
                     event.data.source === "softy_math_commands" &&
                     event.data.ready
                   ) {
+                    var MathCommandsframe = document.getElementById(
+                      "softy_math_commands"
+                    );
                     // Once the "ready" message is received, send the postMessage
                     MathCommandsframe.contentWindow.postMessage(
                       mathTextArea.getInputElement().getValue(),
@@ -95,7 +97,7 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
                       }
                     } else {
                       const cancelButton = document.getElementsByClassName(
-                        "cke_dialog_ui_button_cancel"
+                        "cke_dialog_close_button"
                       )[0];
                       if (cancelButton) {
                         cancelButton.click();
@@ -103,7 +105,7 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
                     }
                   }
                 });
-              }
+              // }
             },
           },
         ],
