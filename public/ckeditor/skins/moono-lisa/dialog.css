@@ -524,10 +524,14 @@ textarea.cke_dialog_ui_input_textarea
 
 	box-sizing: border-box;
 
-	border-radius: 2px;
-
 	min-height: 28px;
 	margin-left: 1px;
+	border-radius: 8px;
+	border: 1px solid var(--Gray-300, #D0D5DD);
+	background: var(--White, #FFF);
+
+	/* Shadow/xs */
+	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
 input.cke_dialog_ui_input_text:hover,
@@ -544,18 +548,17 @@ input.cke_dialog_ui_input_tel:focus,
 textarea.cke_dialog_ui_input_textarea:focus,
 select.cke_dialog_ui_input_select:focus
 {
-	outline: none;
-	border: 2px solid #139ff7;
+	border-radius: 8px;
+	border: 1px solid var(--Brand-300, #D6BBFB);
+	background: var(--White, #FFF);
+	/* Shadow/xs focused 4px primary-100 */
+	box-shadow: 0px 0px 0px 4px #F4EBFF, 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+
 }
 
 input.cke_dialog_ui_input_text:focus
 {
 	padding-left: 5px;
-}
-
-textarea.cke_dialog_ui_input_textarea:focus
-{
-	padding: 3px 5px;
 }
 
 select.cke_dialog_ui_input_select:focus
@@ -983,7 +986,7 @@ tendency that these will be moved to the plugins code in the future.
 
 .cke_dialog_body label + .cke_dialog_ui_labeled_content
 {
-	margin-top: 2px;
+	margin-top: 8px;
 }
 
 .cke_dialog_contents_body .cke_dialog_ui_text,
@@ -1157,4 +1160,13 @@ a.cke_dialog_ui_button.cke_dialog_image_browse
 {
 	border: 2px solid #139FF7;
 	padding: 6px;
+}
+
+.cke_dialog_ui_labeled_label {
+	color: var(--Gray-700, #344054);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px;
+	font-family: "Poppins", sans-serif;
 }

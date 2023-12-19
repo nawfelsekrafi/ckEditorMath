@@ -24,10 +24,13 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
           {
             id: "equation",
             type: "textarea",
-            label: lang.dialogInput,
+            label: "Equation Editor √",
 
             onLoad: function () {
               mathTextArea = this;
+              this.getInputElement().on('input', function () {
+                mathTextArea.onChange();
+              });
             },
 
             setup: function (widget) {
@@ -47,6 +50,16 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
               // Add \( and \) to make TeX be parsed by MathJax by default.
               widget.setData("math", "\\(" + this.getValue() + "\\)");
             },
+            onChange: function () {
+              var MathCommandsframe = document.getElementById(
+                "softy_math_commands"
+              );
+              MathCommandsframe.contentWindow.postMessage(
+                this.getInputElement().getValue(),
+                "*"
+              );
+              mathTextArea.focus();
+            },
           },
           !(CKEDITOR.env.ie && CKEDITOR.env.version == 8) && {
             id: "preview1",
@@ -59,52 +72,55 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
             onLoad: function () {
               makeMathCommandResponsive(this);
               // if (!isLoaded) {
-                isLoaded = true;
+              isLoaded = true;
 
-                
 
-                window.addEventListener("message", (event) => {
-                  // IMPORTANT: check the origin of the data!
 
-                  // on first render wait the math command iframe to fully render then send a message.
-                  if (
-                    event.origin === location.origin &&
-                    event.data.source === "softy_math_commands" &&
-                    event.data.ready
-                  ) {
-                    var MathCommandsframe = document.getElementById(
-                      "softy_math_commands"
-                    );
-                    // Once the "ready" message is received, send the postMessage
-                    MathCommandsframe.contentWindow.postMessage(
-                      mathTextArea.getInputElement().getValue(),
-                      "*"
-                    );
-                  }
+              window.addEventListener("message", (event) => {
+                // IMPORTANT: check the origin of the data!
 
-                  if (
-                    event.origin === location.origin &&
-                    event.data.source === "softy_math_commands" &&
-                    !event.data?.ready
-                  ) {
-                    if (event.data.data !== "cancelEvent") {
-                      mathTextArea.getInputElement().setValue(event.data.data);
-                      const okButton = document.getElementsByClassName(
-                        "cke_dialog_ui_button_ok"
-                      )[0];
-                      if (okButton) {
-                        okButton.click();
-                      }
-                    } else {
-                      const cancelButton = document.getElementsByClassName(
-                        "cke_dialog_close_button"
-                      )[0];
-                      if (cancelButton) {
-                        cancelButton.click();
-                      }
+                // on first render wait the math command iframe to fully render then send a message.
+                if (
+                  event.origin === location.origin &&
+                  event.data.source === "softy_math_commands" &&
+                  event.data.ready
+                ) {
+                  var MathCommandsframe = document.getElementById(
+                    "softy_math_commands"
+                  );
+                  // Once the "ready" message is received, send the postMessage
+                  MathCommandsframe.contentWindow.postMessage(
+                    mathTextArea.getInputElement().getValue(),
+                    "*"
+                  );
+                }
+
+                if (
+                  event.origin === location.origin &&
+                  event.data.source === "softy_math_commands" &&
+                  !event.data?.ready
+                ) {
+                  if (event.data.type === "saveEvent") {
+                    mathTextArea.getInputElement().setValue(event.data.data);
+                    const okButton = document.getElementsByClassName(
+                      "cke_dialog_ui_button_ok"
+                    )[0];
+                    if (okButton) {
+                      okButton.click();
+                    }
+                  } else if (event.data.type === "cancelEvent") {
+                    const cancelButton = document.getElementsByClassName(
+                      "cke_dialog_close_button"
+                    )[0];
+                    if (cancelButton) {
+                      cancelButton.click();
                     }
                   }
-                });
+                  else if (event.data.type === "updateEvent") {
+                    mathTextArea.getInputElement().setValue(event.data.data);
+                  }
+                }
+              });
               // }
             },
           },
@@ -126,10 +142,6 @@ CKEDITOR.dialog?.add("mathjax", function (editor) {
 
       if (cancelButton) {
         cancelButton.setStyle("display", "none");
-      }
-
-      if (defaultEquationTextArea) {
-        defaultEquationTextArea.setStyle("display", "none");
       }
 
       var dialogContainer = dialogElement.findOne(".cke_dialog");

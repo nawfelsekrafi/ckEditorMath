@@ -213,11 +213,9 @@ async function toPNG2() {
       "Sorry, COPY failed - please try clicking on COPY again\n\nIf the problem persists, please contact us by clicking on the feedback icon on the bottom left corner of the extension"
     );
     console.log("error in toIMG error: " + error);
-    trackEvent(error, "error");
   }
 
   saveToHistory();
-  trackEvent("Copy", "copy_image");
 }
 
 //*************************************************************
@@ -272,9 +270,18 @@ function MouseDownEvent(e) {
     default:
       mathFieldArray[mathFieldFocus].cmd(datachar);
   }
+
   //saveLatex();
+  var latex = ReturnLatex();
+  if (softyEditor) {
+    softyEditor.source.postMessage(
+      { type : "updateEvent", data: latex, source: "softy_math_commands" },
+      softyEditor.origin
+    );
+  } else {
+    console.log("softyEditor is null");
+  }
   mathFieldArray[mathFieldFocus].focus();
-  trackEvent(datachar, "keyboard_click");
 }
 
 document.body.addEventListener("keyup", function (e) {
@@ -298,6 +305,15 @@ document.body.addEventListener("keyup", function (e) {
     } else {
       deleteFlag = true;
     }
+  }
+  var latex = ReturnLatex();
+  if (softyEditor) {
+    softyEditor.source.postMessage(
+      { type : "updateEvent", data: latex, source: "softy_math_commands" },
+      softyEditor.origin
+    );
+  } else {
+    console.log("softyEditor is null");
   }
 
   //saveLatex();
@@ -339,6 +355,15 @@ function loadLatexToOutputArea(latexString) {
     }
   } catch {
     mathFieldArray[0].write("");
+  }
+  var latex = ReturnLatex();
+  if (softyEditor) {
+    softyEditor.source.postMessage(
+      { type : "updateEvent", data: latex, source: "softy_math_commands" },
+      softyEditor.origin
+    );
+  } else {
+    console.log("softyEditor is null");
   }
   mathFieldArray[mathFieldFocus].focus();
 }
@@ -385,7 +410,6 @@ var softyEditor = null;
 window.onload = (event) => {
   //chrome.storage.sync.set({dont_show_welcome: false});
   initialMQ();
-  trackEvent("Main Window", "open_extention");
 
   window.parent.postMessage(
     { source: "softy_math_commands", ready: true },
@@ -397,7 +421,7 @@ window.onload = (event) => {
     softyEditor = event;
 
     mathFieldArray[mathFieldFocus].latex(String.raw`${softyEditor.data}`); // Assign specific value
-    mathFieldArray[mathFieldFocus].focus();
+    // mathFieldArray[mathFieldFocus].focus();
   });
 
   i18n();
@@ -452,7 +476,7 @@ function initialMQ() {
     },
   });
 
-  mathFieldArray[mathFieldFocus].focus();
+  // mathFieldArray[mathFieldFocus].focus();
 }
 
 // **************************************************************************
@@ -481,10 +505,6 @@ function ga4(name, eventName) {
   // });
 }
 
-function trackEvent(name, eventName) {
-  ga4(name, eventName);
-}
-
 /*********************** END Google Analytics *********************************/
 
 //internationalizes language
@@ -501,10 +521,9 @@ function i18n() {
 function toLatex() {
   var latex = ReturnLatex();
   navigator.clipboard.writeText(latex);
-  trackEvent("Copy Latex", "copy_latex");
   if (softyEditor) {
     softyEditor.source.postMessage(
-      { data: latex, source: "softy_math_commands" },
+      {type: "saveEvent", data: latex, source: "softy_math_commands" },
       softyEditor.origin
     );
   } else {
@@ -517,7 +536,7 @@ function toLatex() {
 function cancelAndClose() {
   if (softyEditor) {
     softyEditor.source.postMessage(
-      { data: "cancelEvent", source: "softy_math_commands" },
+      { type: "cancelEvent", source: "softy_math_commands" },
       softyEditor.origin
     );
   } else {
@@ -618,7 +637,6 @@ function clickHistoryDialog(e) {
     let latexArrayID = keyElement.getAttribute("latex");
     loadLatexToOutputArea(latexHistory[latexArrayID]);
     //saveLatex();
-    trackEvent("Edit History", "use_history");
     closeHistoryDialog();
     mathFieldArray[mathFieldFocus].focus();
   }
@@ -640,7 +658,6 @@ function closeMatrixDialog() {
   }
   let matrix_dialog = document.getElementById("matrix_dialog");
   matrix_dialog.close();
-  trackEvent("r:" + matrix_row + " c:" + matrix_column, "use_matrix");
   writeMatrix(matrix_row, matrix_column, matrix_shape);
 }
 //cancel Matrix dialgo
@@ -678,6 +695,15 @@ function addNewLine() {
   });
   mathFieldArray.push(newLineItem);
   mathFieldFocus = arrayLength;
+  var latex = ReturnLatex();
+  if (softyEditor) {
+    softyEditor.source.postMessage(
+      { type : "updateEvent", data: latex, source: "softy_math_commands" },
+      softyEditor.origin
+    );
+  } else {
+    console.log("softyEditor is null");
+  }
   mathFieldArray[arrayLength].focus();
 }
 
